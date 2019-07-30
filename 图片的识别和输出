@@ -1,0 +1,19 @@
+import autopy
+import autopy as at
+import pytesseract
+from PIL import Image
+
+#读取本地图片
+im = Image.open(r'C:\Users\Administrator\Desktop\图\timg.jpg')
+
+#识别图片文字
+stred = pytesseract.image_to_string(im, lang="chi_sim")
+
+print(pytesseract.image_to_string(im, lang="chi_sim"))
+
+#移动鼠标到指定地点
+autopy.mouse.smooth_move(219,317)
+#执行鼠标点击出现光标
+autopy.mouse.click(None, 0.1)
+#输出识别的内容
+at.key.type_string(stred, 0)
