@@ -1,0 +1,22 @@
+import urllib.request
+import re
+
+#创建函数获取整个HTML页面
+
+def getHtml(url):
+    page = urllib.request.urlopen(url)  ##打开页面
+    html = page.read() ##获取目标页面的源码
+    return html
+
+if __name__=="__main__":
+    html = getHtml("http://www.quanjing.com/category/118291.html")
+
+    reg = "http://.+?\\.jpg"
+    #下载图片
+    img = re.compile(reg)
+    html = html.decode('utf-8')
+
+    imglist = re.findall(img, html)
+    print(imglist[0])
+    #保存图片在指定路径下
+    urllib.request.urlretrieve(imglist[0], 'E:/Python/photo/1.jpg')
