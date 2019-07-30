@@ -1,0 +1,11 @@
+import os
+
+#指定路径
+path = 'E:/Python/photo/'
+
+#获取路径并移除
+for root, dirs, files in os.walk(path):
+    for name in files:
+        if name.endswith('.jpg'):
+            os.remove(os.path.join(root, name))
+            print("Delete File:" + os.path.join(root, name))
