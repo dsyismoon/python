@@ -1,0 +1,7 @@
+import autopy
+
+#下载模板cmd中pip install autopy下载
+#鼠标的移动位置
+autopy.mouse.smooth_move(24,121)
+#鼠标的点击
+autopy.mouse.click(None, 0.1)
