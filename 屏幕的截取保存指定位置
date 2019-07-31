@@ -1,0 +1,28 @@
+from selenium import webdriver
+from pathlib import Path
+from time import sleep
+
+# 先在python3路径下添加谷歌驱动
+driver = webdriver.Chrome()
+
+driver.get("http://www.baidu.com")
+driver.find_element_by_id("kw").send_keys('selenium')
+driver.find_element_by_id('su').click()
+sleep(5)
+#  截取当前窗口，并指定截图图片的保存位置
+i = 1
+scrpath = "E:\\test"  # 指定的保存目录
+capturename = '\\'+str(i)+ '.png' #自定义命名截图
+whilepath = scrpath+capturename   #文件保存位置
+print(whilepath)
+if Path(scrpath).is_dir(): # 判断文件夹是否存在
+    pass
+else:
+    Path(scrpath).mkdir() #如果不存在，创建文件夹
+while Path(whilepath).exists(): #判断当前文件夹下是否存在文件
+    i += 1
+    capturename = '\\'+str(i)+ '.png'
+    whilepath = scrpath+capturename
+driver.get_screenshot_as_file(whilepath) #只能是字符串 否则无法截图
+sleep(5)
+driver.quit()
