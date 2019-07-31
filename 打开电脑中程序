@@ -1,0 +1,8 @@
+import os
+
+def open_app(app_dir):
+    os.startfile(app_dir)
+if __name__ == '__main__':
+    #指定应用程序目录
+    app_dir = r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe'
+    open_app(app_dir)
